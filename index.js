@@ -31,7 +31,6 @@ bot.addListener("names" + config.channels[0], function(nicks) {
     //Object.keys because node-irc returns nicks as a large object with empty keys...
     users = Object.keys(nicks);
 
-
 });
 //Whenver a user joins, let's check their user name. Once TheLounge supports in-line notices, this should probably be changed to bot.notice()
 bot.addListener("join", function(channel, who) {
@@ -130,6 +129,9 @@ bot.addListener("message", function(from, to, text) {
                 }
                 bot.say(to, links[0].title + ' - ' + links[0].link);
             });
+            //CSS command
+        } else if (text.toUpperCase() === "!CSS") {
+            bot.say(to, "https://github.com/thelounge/lounge/wiki/CSS-Modifications");
         }
         //Just a message
     } else {
